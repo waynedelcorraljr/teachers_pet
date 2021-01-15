@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+students = Student.create([{name: "Wizard", grade: "666"}, {name: "Morty", grade: "10"}])
+
+teacher = User.create(username: 'teacher', password: 'test')
+
+wizardry = Course.create(name: 'wizardry', description: 'fake description', user_id: 1, student_id: 1)
+
+Lesson.create(title: 'wand etiquette', plan: 'be nice', course_id: 1)
