@@ -1,0 +1,16 @@
+<h1>Hello <%= @user.username %>!</h1>
+
+<h3>Your Courses:</h3>
+<ul>
+<% @user.courses.each do |course| %>
+    <li><%= link_to course.name, course_path(course) %><br>
+    <%= course.description %></li>
+<% end %>
+</ul>
+
+<h3>Your Students:</h3>
+<ul>
+<% @user.students.each do |student| %>
+    <li><%= link_to student.name, student_path(student) %> <br> Grade: <%= student.grade %></li>
+<% end %>
+</ul>
