@@ -6,6 +6,7 @@ class LessonsController < ApplicationController
     end
     
     def show
+        @lesson = Lesson.find(params[:id])
     end
 
     def destroy

@@ -11,6 +11,6 @@
 <h3>Lessons:</h3>
 <ul>
 <% @course.lessons.each do |lesson| %>
-    <li><%= lesson.title %><br><%= lesson.plan %></li>
+    <li><%= link_to lesson.title, lesson_path(lesson) %><br><%= lesson.plan %></li>
 <% end %>
 </ul>
