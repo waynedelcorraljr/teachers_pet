@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
     def new
+        @lesson = Lesson.new
     end
     
     def create
@@ -7,6 +8,7 @@ class LessonsController < ApplicationController
     
     def show
         @lesson = Lesson.find(params[:id])
+        # raise params.inspect
     end
 
     def destroy

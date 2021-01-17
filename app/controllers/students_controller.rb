@@ -1,4 +1,13 @@
 class StudentsController < ApplicationController
+    def index
+        if session[:user_id]
+            @user = User.find(session[:user_id])
+            @students = @user.students
+        else
+            redirect_to signin_path
+        end
+    end
+    
     def new
     end
     

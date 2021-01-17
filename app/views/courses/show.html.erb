@@ -1,12 +1,6 @@
 <h1><%= @course.name %></h1>
 <h2><%= @course.description %></h2>
-
-<h3>Students:</h3>
-<ul>
-<% @course.students.each do |student| %>
-    <li><%= link_to student.name, student_path(student) %><br>Grade: <%= student.grade %></li>
-<% end %>
-</ul>
+<p>fine tuned for: <%= @course.student.name %></p>
 
 <h3>Lessons:</h3>
 <ul>
@@ -14,3 +8,16 @@
     <li><%= link_to lesson.title, lesson_path(lesson) %><br><%= lesson.plan %></li>
 <% end %>
 </ul>
+
+<h3>Other Students Taking this Course:</h3>
+<ul>
+
+<% @course.students.each do |student| %>
+    <% if student.name != @course.student.name %>
+        <li><%= link_to student.name, student_path(student) %><br>Grade: <%= student.grade %></li>
+    <% else %>
+        <p>There are no other students enrolled in this course.</p>
+    <% end %>
+<% end %>
+</ul>
+

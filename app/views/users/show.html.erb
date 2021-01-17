@@ -4,13 +4,15 @@
 <ul>
 <% @user.courses.each do |course| %>
     <li><%= link_to course.name, course_path(course) %><br>
-    <%= course.description %></li>
+    <%= course.description %><br> Student: <%= course.student.name %><br>
+    <br><%= button_to "Delete Course", {controller: :courses, action: :destroy, id: course.id}, method: :delete %><br></li>
 <% end %>
 </ul>
+<%= link_to "Create new course", new_user_course_path(@user) %>
 
 <h3>Your Students:</h3>
 <ul>
-<% @user.students.each do |student| %>
+<% @user.students.uniq.each do |student| %>
     <li><%= link_to student.name, student_path(student) %> <br> Grade: <%= student.grade %></li>
 <% end %>
 </ul>
