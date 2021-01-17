@@ -1,0 +1,16 @@
+<h1><%= @student.name %></h1>
+<h2>Grade: <%= @student.grade %></h2>
+
+<h3>Courses:</h3>
+<ul>
+<% @student.courses.each do |course| %>
+    <li><%= course.name %><br><%= course.description %></li>
+<% end %>
+</ul>
+
+<h3>Lessons:</h3>
+<ul>
+<% @student.lessons.each do |lesson| %>
+    <li><%= lesson.title %><br><%= lesson.plan %></li>
+<% end %>
+</ul>
