@@ -1,11 +1,20 @@
 class CoursesController < ApplicationController
     def new
-        @course = Course.new
+        raise params.inspect
+        if session[:user_id]
+            @course = Course.new(user_id: session[:user_id]) 
+        else
+            redirect_to signin_path
+        end
     end
     
-    def create
-        @course = Course.create(course_params)
-        redirect_to user_path(@course.user)
+    def create 
+        @course = Course.new(course_params)
+        if @course.save
+            redirect_to user_path(@course.user)
+        else
+            render :new
+        end
     end
     
     def show

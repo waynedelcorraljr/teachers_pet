@@ -1,5 +1,5 @@
-<h1>Add a student to your roster:</h1>
-<%= form_with model: @user do |f| %>
+<h1>Create new student:</h1>
+<%= form_with model: @student do |f| %>
     <h3>Name: <%= f.text_field :name %></h3>
     <h3>Grade: (Enter digit only) <%= f.text_field :grade %></h3>
   <%= f.submit "Create Student" %>

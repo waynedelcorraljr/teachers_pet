@@ -7,3 +7,14 @@
 
 <% end %>
 </ul>
+
+<%# Take out before production %>
+<h1>All students:</h1>
+<% Student.all.uniq.each do |s| %>
+    <li><%= link_to s.name, student_path(s.id) %><br>
+    <%= button_to "Delete Student", {controller: :students, action: :destroy, id: s.id}, method: :delete %><br>
+    </li>
+
+<% end %>
+</ul>
+<%# Take out before production %>
