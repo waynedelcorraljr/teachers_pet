@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
     def new
-        raise params.inspect
+        # raise params.inspect
         if session[:user_id]
             @course = Course.new(user_id: session[:user_id]) 
         else
@@ -9,8 +9,10 @@ class CoursesController < ApplicationController
     end
     
     def create 
-        @course = Course.new(course_params)
-        if @course.save
+        @course = Course.create(course_params)
+        # raise params.inspect
+
+        if @course.valid?
             redirect_to user_path(@course.user)
         else
             render :new
