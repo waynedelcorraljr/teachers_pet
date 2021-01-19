@@ -4,3 +4,7 @@
     <h3>Password: <%= f.password_field :password %></h3>
   <%= f.submit "Create Teacher" %>
 <% end %>
+
+<h2>OR</h2>
+
+<%= link_to "Sign Up with Google", '/auth/google_oauth2', method: :post %>
