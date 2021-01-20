@@ -1,0 +1,22 @@
+
+    <% if flash.any? %>
+    <% flash.each do |type, msg| %>
+        <div class="alert alert-danger">
+        <%= msg %>
+        </div>
+    <% end %>
+    <% end %>
+    
+    <%= form_with model: @user, local: true do |f| %>
+        <% if @user.errors[:username].present? %>
+            <%= f.text_field :username, placeholder: "Name #{@user.errors[:username].first}", class: "form-group border border-danger rounded" %>
+        <% else %>
+            <%= f.text_field :username, placeholder: "Name", class: "form-group border border-secondary rounded" %>
+        <% end %>
+        <% if @user.errors[:password].present? %>
+            <%= f.password_field :password, placeholder: "Password #{@user.errors[:password].first}", class: "form-group border border-danger rounded" %>
+        <% else %>
+            <%= f.password_field :password, placeholder: "Password", class: "form-group border border-secondary rounded" %>
+        <% end %>
+    <%= f.submit "Create Teacher" %>
+    <% end %>

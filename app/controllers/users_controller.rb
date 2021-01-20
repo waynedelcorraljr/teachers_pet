@@ -2,15 +2,20 @@ class UsersController < ApplicationController
     def new
         @user = User.new
     end
+
+    def index
+        redirect_to new_user_path
+    end
     
     def create
-        # raise params.inspect
-        @user = User.create(user_params)
-        if @user.valid?
+        @user = User.new(user_params)
+        if @user.save
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
+            flash[:alert] = "Username/Password was invalid. Please try again."
             render :new
+            # raise @user.errors.inspect
         end
     end
     
