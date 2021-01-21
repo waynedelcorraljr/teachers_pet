@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   resources :lessons
   resources :sessions, only: [:new, :create]
   get '/signin', to: 'sessions#new'
-  get 'signout', to: 'sessions#destroy'
+  delete 'signout', to: 'sessions#destroy'
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 end
