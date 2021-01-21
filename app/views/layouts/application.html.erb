@@ -11,17 +11,22 @@
   </head>
 
   <body>
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="navbar navbar-inverse" role="navigation">
       
-    <div class="navbar-header">
-          
-      <a class="navbar-brand" href="<%= root_url %>">Home</a>
-      <a class="navbar-brand" href="<%= session[:user_id] ? user_path(User.find(session[:user_id])) : new_user_path %>">
-        <%= session[:user_id] ? "#{User.find(session[:user_id]).username}'s Profile" : "Sign Up" %>
-      </a>
-      <a class="navbar-brand" href="<%= session[:user_id] ? signout_path : signin_path %>">
-        <%= session[:user_id] ? "Log Out" : "Login" %>
-      </a>
+    <div class="container-fluid">
+
+      <ul class="nav navbar-nav">   
+        <li><a href="<%= root_url %>">Home</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="<%= session[:user_id] ? user_path(User.find(session[:user_id])) : new_user_path %>">
+          <%= session[:user_id] ? "#{User.find(session[:user_id]).username}'s Profile" : "Sign Up" %>
+        </a></li>
+        <li><a href="<%= session[:user_id] ? signout_path : signin_path %>">
+          <%= session[:user_id] ? "Log Out" : "Login" %>
+        </a></li>
+      </ul>
 
     </div>
         

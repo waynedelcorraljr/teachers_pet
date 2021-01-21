@@ -1,0 +1,24 @@
+<% if flash.any? %>
+    <% flash.each do |type, msg| %>
+        <div class="alert alert-danger">
+        <%= msg %>
+        </div>
+    <% end %>
+<% end %>
+
+<%= form_with model: @course, local: true do |f| %>
+  <% if @course.errors[:name].present? %>
+      <h6><%= f.text_field :name, placeholder: "Name #{@course.errors[:name].first}", class: "form-group border border-danger rounded" %></h6>
+  <% else %>
+      <h6><%= f.text_field :name, placeholder: "Name", class: "form-group border border-secondary rounded" %></h6>
+  <% end %>
+  <% if @course.errors[:description].present? %>
+      <h6><%= f.text_area :description, placeholder: "Description #{@course.errors[:description].first}", class: "form-group border border-danger rounded" %></h6>
+  <% else %>
+      <h6><%= f.text_area :description, placeholder: "Description", class: "form-group border border-secondary rounded" %></h6>
+  <% end %>
+    <h6><%= f.select :student_id, options_from_collection_for_select(Student.all, :id, :name), include_blank: "Select Student" %></h6>
+ 
+    <%= f.hidden_field :user_id %>
+  <%= f.submit "Create Course" %>
+<% end %>
