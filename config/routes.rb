@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'welcome#home'
   resources :users do
-    resources :courses, :students, only: [:new, :create]
+    resources :courses, :students
   end
   resources :students do
     resources :courses

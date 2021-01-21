@@ -1,0 +1,5 @@
+<%= form_with model: @student do |f| %>
+    <h3>Name: <%= f.text_field :name %></h3>
+    <h3>Grade: (Enter digit only) <%= f.text_field :grade %></h3>
+  <%= f.submit %>
+<% end %>

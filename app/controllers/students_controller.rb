@@ -4,6 +4,7 @@ class StudentsController < ApplicationController
             @user = User.find(session[:user_id])
             @students = @user.students
         else
+            flash[:alert] = "Must be signed in to view students."
             redirect_to signin_path
         end
     end

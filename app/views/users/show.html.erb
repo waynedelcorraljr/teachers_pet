@@ -7,9 +7,11 @@
     <% @user.courses.each do |course| %>
         <li><%= link_to course.name, course_path(course) %><br>
         <%= course.description %><br> Student: <%= course.student.name %><br>
-        <br><%= button_to "Delete Course", {controller: :courses, action: :destroy, id: course.id}, method: :delete %><br></li>
+        </li>
     <% end %>
+    <br>
     <%= link_to "Create new course", new_user_course_path(@user) %>
+    <%= link_to "Edit/Delete Courses", user_courses_path(@user) %>
     </ul>
     <br>
     <h3>Your Students:</h3>

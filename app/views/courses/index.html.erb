@@ -1,0 +1,14 @@
+<div class="container">
+    <h1>Your Courses:</h1>
+
+    <% @courses.each do |course| %>
+        <li>
+        <%= link_to course.name, course_path(course) %><br>
+        <%= course.description %><br> Student: <%= course.student.name %><br>
+        <%= link_to "Edit Course", edit_user_course_path(@user, course) %>
+        <%= button_to "Delete Course", {controller: :courses, action: :destroy, id: course.id}, method: :delete, data: {confirm: "Action cannot be undone, are you sure?"} %>
+        <br>
+        </li>
+    <% end %>
+
+</div>
