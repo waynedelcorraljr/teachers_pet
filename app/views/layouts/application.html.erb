@@ -25,7 +25,7 @@
         </a></li>
         <li>
         <% if session[:user_id] %>
-          <%= button_to "Sign out", signout_path, method: :delete %>
+          <%= button_to "Sign out", signout_path, method: :delete, class: "btn btn-link" %>
         <% else %>
           <%= link_to "Sign in", signin_path %>
         <% end %>
