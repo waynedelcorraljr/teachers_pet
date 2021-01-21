@@ -9,10 +9,10 @@ class CoursesController < ApplicationController
     end
     
     def create 
-        @course = Course.create(course_params)
-        # raise params.inspect
+        @course = Course.new(course_params)
+        raise @course.errors.inspect
 
-        if @course.valid?
+        if @course.save
             redirect_to user_path(@course.user)
         else
             render :new
