@@ -1,19 +1,38 @@
 <div class="container">
+    <div class="d-flex  justify-content-center">
     <h1><%= @course.name %></h1>
-    <h2><%= @course.description %></h2>
-    <p>fine tuned for: <%= @course.student.name %></p>
+    </div>
 
+    <div class="d-flex  justify-content-center">
+    <h2 class="text-center"><%= @course.description %></h2>
+    </div>
+    <div class="d-flex  justify-content-center">
+    <p>fine tuned for: <%= @course.student.name %></p>
+    </div>
+
+    <div class="d-flex  justify-content-center">
     <h3>Lessons:</h3>
+    </div>
+    <div class="d-flex  justify-content-center">
+    <%= link_to "Create new Lesson", new_course_lesson_path(@course) %>
+    </div>
+    <div class="d-flex  justify-content-center">
     <ul>
     <% @course.lessons.each do |lesson| %>
         <li><%= link_to lesson.title, lesson_path(lesson) %><br><%= lesson.plan %></li>
     <% end %>
     </ul>
+    </div>
 
+    <div class="d-flex  justify-content-center">
     <h3>Other Students Taking this Course:</h3>
+    </div>
+
+    <div class="d-flex  justify-content-center">
     <ol>
     <% Student.all.each do |student| %>
         <%= render partial: "courses/student_li", locals: {student: student} %>
     <% end %>
     </ol>
+    </div>
 </div>

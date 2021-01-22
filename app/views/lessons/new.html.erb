@@ -1,7 +1,7 @@
-<h1>Create a new Lesson</h1>
+<div class="d-flex justify-content-center">  
+  <h1>Create a new Lesson</h1>
+</div>
 
-<%= form_with model: @lesson do |f| %>
-    <h3>Title: <%= f.text_field :title %></h3>
-    <h3>Plan: <%= f.text_area :plan %></h3>
-  <%= f.submit "Create Lesson" %>
-<% end %> 
+<div class="d-flex justify-content-center">  
+  <%= render 'form' %>
+</div>

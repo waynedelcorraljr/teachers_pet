@@ -1,16 +1,18 @@
-<h1><%= @student.name %></h1>
-<h2>Grade: <%= @student.grade %></h2>
+<div class="container">  
+    <h1><%= @student.name %></h1>
+    <h2>Grade: <%= @student.grade %></h2>
 
-<h3>Courses:</h3>
-<ul>
-<% @student.courses.each do |course| %>
-    <li><%= link_to course.name, course_path(course) %><br><%= course.description %></li>
-<% end %>
-</ul>
+    <h3>Courses:</h3>
+    <ul>
+    <% @student.courses.each do |course| %>
+        <li><%= link_to course.name, course_path(course) %><br><%= course.description %></li>
+    <% end %>
+    </ul>
 
-<h3>Lessons:</h3>
-<ul>
-<% @student.lessons.each do |lesson| %>
-    <li><%= link_to lesson.title, lesson_path(lesson) %><br><%= lesson.plan %></li>
-<% end %>
-</ul>
+    <h3>Lessons:</h3> 
+    <ul>
+    <% @student.lessons.each do |lesson| %>
+        <li><%= link_to lesson.title, lesson_path(lesson) %><br><%= lesson.plan %></li>
+    <% end %>
+    </ul>
+</div>

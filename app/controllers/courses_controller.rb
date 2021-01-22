@@ -1,8 +1,8 @@
 class CoursesController < ApplicationController
     def index
         if session[:user_id]
-            @user = User.find(session[:user_id])
-            @courses = @user.courses
+            # @user = User.find(session[:user_id])
+            @courses = current_user.courses
         else
             flash[:alert] = "Must be logged in to perform this action."
             redirect_to signin_path
