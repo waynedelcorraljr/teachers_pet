@@ -20,21 +20,12 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<%= session[:user_id] ? user_path(current_user) : new_user_path %>">
-          <%= session[:user_id] ? "#{current_user.username}'s Profile" : "Sign Up" %>
-        </a></li>
-        <li>
-        <% if session[:user_id] %>
-          <%= button_to "Sign out", signout_path, method: :delete, class: "btn btn-link" %>
-        <% else %>
-          <%= link_to "Sign in", signin_path %>
-        <% end %>
-        </li>
+        <%= render partial: "layouts/profile_signup_li" %>
+        <%= render partial: "layouts/signin_signout_li" %>
       </ul>
 
     </div>
-        
-      
+         
     </div>
 
     <%= yield %>
