@@ -1,7 +1,8 @@
 class LessonsController < ApplicationController
     def index
         if params[:course_id]
-            redirect_to user_course_path(current_user, Course.find_by(id: params[:course_id]))
+            @course = Course.find_by(id: params[:course_id])
+            @lessons = @course.lessons
         else
             redirect_to courses_path
         end
@@ -31,12 +32,24 @@ class LessonsController < ApplicationController
     end
 
     def destroy
+        lesson = Lesson.find_by(id: params[:id])
+        lesson.destroy
+        redirect_to courses_path
     end
 
     def edit 
+        @lesson = Lesson.find_by(id: params[:id])
     end
 
     def update
+        @lesson = Lesson.find_by(id: params[:id])
+        if session[:user_id] == @lesson.course.user.id
+            @lesson.update(lesson_params)
+            redirect_to course_lesson_path(@lesson.course, @lesson)
+        else
+            flash[:alert] = "Lesson must belong to you to edit."
+            redirect_to course_lessons_path(@lesson.course)
+        end
     end
 
     private

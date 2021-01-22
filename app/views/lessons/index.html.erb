@@ -1,0 +1,15 @@
+<div class="d-flex  justify-content-center">
+    <h3><%= @course.name %>'s Lessons:</h3>
+</div>
+
+<div class="d-flex  justify-content-center">
+    <% @lessons.each do |lesson| %>
+        <li>
+        <%= link_to lesson.title, course_lesson_path(@course, lesson) %><br>
+        <%= lesson.plan %><br> Student: <%= lesson.course.student.name %><br>
+        <%= link_to "Edit Lesson", edit_course_lesson_path(@course, lesson) %>
+        <%= button_to "Delete Lesson", {controller: :lessons, action: :destroy, id: lesson.id}, method: :delete, data: {confirm: "Action cannot be undone, are you sure?"} %>
+        <br>
+        </li>
+    <% end %>
+</div>
