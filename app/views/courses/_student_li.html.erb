@@ -1,0 +1,5 @@
+<% student.courses.each do |c| %>
+    <% if c.name == @course.name && c.student != @course.student %>
+        <li><%= link_to student.name, student_path(student) %><br>Grade: <%= student.grade %></li>
+    <% end %>
+<% end %>

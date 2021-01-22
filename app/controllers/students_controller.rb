@@ -1,8 +1,7 @@
 class StudentsController < ApplicationController
     def index
         if session[:user_id]
-            @user = User.find(session[:user_id])
-            @students = @user.students
+            @students = current_user.students
         else
             flash[:alert] = "Must be signed in to view students."
             redirect_to signin_path

@@ -1,23 +1,19 @@
-<h1><%= @course.name %></h1>
-<h2><%= @course.description %></h2>
-<p>fine tuned for: <%= @course.student.name %></p>
+<div class="container">
+    <h1><%= @course.name %></h1>
+    <h2><%= @course.description %></h2>
+    <p>fine tuned for: <%= @course.student.name %></p>
 
-<h3>Lessons:</h3>
-<ul>
-<% @course.lessons.each do |lesson| %>
-    <li><%= link_to lesson.title, lesson_path(lesson) %><br><%= lesson.plan %></li>
-<% end %>
-</ul>
-
-<h3>Other Students Taking this Course:</h3>
-<ul>
-
-<% @course.students.each do |student| %>
-    <% if student.name != @course.student.name %>
-        <li><%= link_to student.name, student_path(student) %><br>Grade: <%= student.grade %></li>
-    <% else %>
-        <p>There are no other students enrolled in this course.</p>
+    <h3>Lessons:</h3>
+    <ul>
+    <% @course.lessons.each do |lesson| %>
+        <li><%= link_to lesson.title, lesson_path(lesson) %><br><%= lesson.plan %></li>
     <% end %>
-<% end %>
-</ul>
+    </ul>
 
+    <h3>Other Students Taking this Course:</h3>
+    <ol>
+    <% Student.all.each do |student| %>
+        <%= render partial: "courses/student_li", locals: {student: student} %>
+    <% end %>
+    </ol>
+</div>

@@ -20,8 +20,8 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<%= session[:user_id] ? user_path(User.find(session[:user_id])) : new_user_path %>">
-          <%= session[:user_id] ? "#{User.find(session[:user_id]).username}'s Profile" : "Sign Up" %>
+        <li><a href="<%= session[:user_id] ? user_path(current_user) : new_user_path %>">
+          <%= session[:user_id] ? "#{current_user.username}'s Profile" : "Sign Up" %>
         </a></li>
         <li>
         <% if session[:user_id] %>

@@ -31,6 +31,7 @@ class CoursesController < ApplicationController
     
     def show
         @course = Course.find(params[:id])
+        # raise params.inspect
     end
 
     def destroy
@@ -41,8 +42,6 @@ class CoursesController < ApplicationController
 
     def edit 
         @course = Course.find(params[:id])
-        
-        # raise params.inspect
     end
     
     def update
