@@ -1,31 +1,12 @@
-<h1><%= current_user.username %>'s students:</h1>
-<ul class="list-group-flush">
-<% @students.uniq.each do |s| %>
-    <li class="list-group-item"><%= link_to s.name, student_path(s.id) %><br>
-    <%= button_to "Delete Student", {controller: :students, action: :destroy, id: s.id}, method: :delete, data: {confirm: "Action cannot be undone, are you sure?"} %><br>
-    </li>
-
-<% end %>
-</ul>
-
- <% @courses.each do |course| %>
-        <li>
-        <%= link_to course.name, course_path(course) %><br>
-        <%= course.description %><br> Student: <%= course.student.name %><br>
-        <%= link_to "Edit Course", edit_user_course_path(@user, course) %>
-        <%= button_to "Delete Course", {controller: :courses, action: :destroy, id: course.id}, method: :delete, data: {confirm: "Action cannot be undone, are you sure?"} %>
-        <br>
+ <div class="d-flex justify-content-right">
+    <h1><%= current_user.username %>'s students:</h1>
+    <ol class="list-group-flush">
+    <% @students.each do |s| %>
+        <li class="list-group-item"><%= link_to s.name, student_path(s.id) %><br><br>
+        <%= link_to "Edit Student", edit_student_path(s) %><br>
+        <%= button_to "Delete Student", {controller: :students, action: :destroy, id: s.id}, method: :delete, data: {confirm: "Action cannot be undone, are you sure?"} %><br>
         </li>
+
     <% end %>
-
-<%# Take out before production %>
-<h6>All students:</h6>
-<ol>
-<% Student.all.uniq.each do |s| %>
-    <li><%= link_to s.name, student_path(s.id) %><br>
-    <%= button_to "Delete Student", {controller: :students, action: :destroy, id: s.id}, method: :delete %><br>
-    </li>
-
-<% end %>
-</ol>
-<%# Take out before production %>
+    </ol>
+</div>

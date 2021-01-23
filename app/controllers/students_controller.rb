@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
     def index
         if session[:user_id]
-            @students = current_user.students
+            @students = current_user.students.uniq.sort_by {|s| s.name}
         else
             flash[:alert] = "Must be signed in to view students."
             redirect_to signin_path
@@ -28,9 +28,18 @@ class StudentsController < ApplicationController
     end
 
     def edit 
+        @student = Student.find_by(id: params[:id])
     end
 
     def update
+        @student = Student.find_by(id: params[:id])
+        if @student.users.include?(current_user)
+            @student.update(student_params)
+            redirect_to user_students_path(current_user)
+        else
+            flash[:alert] = "Must be one of your students to edit."
+            redirect_to students_path
+        end
     end
 
     private
