@@ -1,4 +1,23 @@
-<h1><%= @lesson.title %></h1>
-<h2><%= @lesson.plan %></h2>
+<div class="d-flex  justify-content-center">
+    <h1><%= @lesson.title %></h1>
+</div>
+<div class="d-flex  justify-content-center">    
+    <h6><%= @lesson.plan %></h6>
+</div>
+<div class="d-flex  justify-content-center">    
+    <h4>Lesson plan for: <%= @lesson.course.student.name %></h4>
+</div>
 
-<h4>Lesson plan for: <%= @lesson.course.student.name %></h4>
+<div class="d-flex  justify-content-center">    
+    <%= link_to "Edit Lesson", edit_course_lesson_path(@lesson.course, @lesson) %>
+</div>
+<div class="d-flex  justify-content-center">    
+    <%= button_to "Delete Lesson", {controller: :lessons, action: :destroy, id: @lesson.id}, method: :delete, data: {confirm: "Action cannot be undone, are you sure?"} %>
+</div>
+<br><br><br>
+<div class="d-flex  justify-content-center">
+        <%= link_to "Create new Lesson", new_course_lesson_path(@lesson.course) %>
+</div>
+<div class="d-flex  justify-content-center">
+        <%= link_to "View all lessons for course.", course_lessons_path(@lesson.course) %>
+</div>

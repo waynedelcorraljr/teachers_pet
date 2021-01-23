@@ -32,9 +32,10 @@ class LessonsController < ApplicationController
     end
 
     def destroy
+        course = Course.find_by(id: params[:course_id])
         lesson = Lesson.find_by(id: params[:id])
         lesson.destroy
-        redirect_to courses_path
+        redirect_to course_lessons_path(course)
     end
 
     def edit 

@@ -3,8 +3,9 @@
 </div>
 
 <div class="d-flex  justify-content-center">
+    <ul class="list-group">
     <% @lessons.each do |lesson| %>
-        <li>
+        <li class="list-group-item">
         <%= link_to lesson.title, course_lesson_path(@course, lesson) %><br>
         <%= lesson.plan %><br> Student: <%= lesson.course.student.name %><br>
         <%= link_to "Edit Lesson", edit_course_lesson_path(@course, lesson) %>
@@ -12,4 +13,13 @@
         <br>
         </li>
     <% end %>
+    </ul>
 </div>
+<br><br><br>
+<div class="d-flex  justify-content-center">
+        <%= link_to "Create new Lesson", new_course_lesson_path(@course) %>
+</div>
+<div class="d-flex  justify-content-center">
+        <%= link_to "View all courses", user_courses_path(current_user) %>
+</div>
+

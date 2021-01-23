@@ -1,7 +1,7 @@
-<h1><%= @user.username %>'s students:</h1>
-<ul>
+<h1><%= current_user.username %>'s students:</h1>
+<ul class="list-group-flush">
 <% @students.uniq.each do |s| %>
-    <li><%= link_to s.name, student_path(s.id) %><br>
+    <li class="list-group-item"><%= link_to s.name, student_path(s.id) %><br>
     <%= button_to "Delete Student", {controller: :students, action: :destroy, id: s.id}, method: :delete, data: {confirm: "Action cannot be undone, are you sure?"} %><br>
     </li>
 
