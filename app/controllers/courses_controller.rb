@@ -1,8 +1,11 @@
 class CoursesController < ApplicationController
     def index
+        # raise params.inspect
         if session[:user_id]
-            # @user = User.find(session[:user_id])
             @courses = current_user.courses
+            if !params[:student_id].blank?
+                @courses = Course.by_student(params[:student_id], params[:user_id])
+            end
         else
             flash[:alert] = "Must be logged in to perform this action."
             redirect_to signin_path

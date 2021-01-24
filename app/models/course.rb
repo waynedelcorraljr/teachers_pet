@@ -7,4 +7,8 @@ class Course < ApplicationRecord
     def students
         Student.all.select { |s| s.courses.include?(Course.find_by(name: self.name))}
     end
+
+    def self.by_student(student_id, user_id)
+        where(student_id: student_id, user_id: user_id)
+    end
 end

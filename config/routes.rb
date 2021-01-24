@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   resources :lessons
   resources :sessions, only: [:new, :create]
+  get 'courses/by_student/:student_id/:user_id', to: 'courses#index'
   get '/signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'
   get '/auth/:provider/callback', to: 'sessions#omniauth'
