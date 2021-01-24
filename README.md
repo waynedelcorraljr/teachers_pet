@@ -18,13 +18,13 @@ The setups steps expect following tools installed on the system.
 - Ruby [2.6.1]
 - Rails [6.0.3]
 
-##### 1. Check out the repository
+#### 1. Check out the repository
 
 ```bash
 git clone https://github.com/waynedelcorraljr/teachers_pet.git
 ```
 
-##### 2. Install dependencies
+#### 2. Install dependencies
 
 Run following command from /teachers_pet directory 
 
@@ -32,17 +32,15 @@ Run following command from /teachers_pet directory
 bundle install 
 ```
 
-##### 3. Create and setup the database
+#### 3. Create and setup the database
 
-Run the following commands to create and setup the database.
+Run the following command to create and setup the database. 
 
 ```bash
 rake db:migrate
-
-rake db:seed
 ```
 
-##### 4. Start the Rails server
+#### 4. Start the Rails server
 
 You can start the rails server using the command given below.
 
