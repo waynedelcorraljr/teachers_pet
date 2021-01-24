@@ -5,7 +5,7 @@ class Course < ApplicationRecord
     validates :name, :description, presence: true
 
     def students
-        Student.all.select { |s| s.courses.include?(Course.find_by(name: self.name))}
+        Student.all.select { |s| s.courses.include?(Course.where(name: self.name))}
     end
 
     def self.by_student(student_id, user_id)
