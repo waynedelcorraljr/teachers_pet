@@ -1,5 +1,21 @@
-<%= form_with model: @student do |f| %>
-    <%= f.text_field :name, placeholder: "Name" %>
-    <%= f.text_field :grade, placeholder: "Grade: (Enter digit only)" %>
+<% if flash.any? %>
+    <% flash.each do |type, msg| %>
+        <div class="alert alert-danger">
+        <%= msg %>
+        </div>
+    <% end %>
+<% end %>
+
+<%= form_with model: @student, local: true do |f| %>
+    <% if @student.errors[:name].present? %>
+        <%= f.text_field :name, placeholder: "Name #{@student.errors[:name].first}", class: "form-group border border-danger rounded" %>
+    <% else %>
+        <%= f.text_field :name, placeholder: "Name", class: "form-group border border-secondary rounded" %>
+    <% end %>
+    <% if @student.errors[:grade].present? %>
+        <%= f.text_field :grade, placeholder: "Grade #{@student.errors[:grade].first}", class: "form-group border border-danger rounded" %>
+    <% else %>
+        <%= f.text_field :grade, placeholder: "Grade: (Enter digit only)", class: "form-group border border-secondary rounded" %>
+    <% end %>
   <%= f.submit %>
 <% end %>

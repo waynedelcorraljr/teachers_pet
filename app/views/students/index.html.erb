@@ -10,3 +10,10 @@
     <% end %>
     </ol>
 </div>
+
+<div class="d-flex  justify-content-center">
+        <%= link_to "back to #{current_user.username}'s Classroom", user_path(current_user) %>
+</div>
+<div class="d-flex  justify-content-center">
+        <%= link_to "Create new course with registered student to add to roster", new_user_course_path(current_user) %>
+</div>

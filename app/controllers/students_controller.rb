@@ -9,12 +9,22 @@ class StudentsController < ApplicationController
     end
     
     def new
-        @student = Student.new
+        if session[:user_id]
+            @student = Student.new
+        else
+            flash[:alert] = "Must be logged in to create student."
+            redirect_to signin_path
+        end
     end
     
     def create
-        Student.create(student_params)
-        redirect_to students_path
+        @student = Student.new(student_params)
+        if @student.save
+            redirect_to user_path(current_user)
+        else
+            flash[:alert] = "All fields must be completed."
+            render :new
+        end
     end
     
     def show
