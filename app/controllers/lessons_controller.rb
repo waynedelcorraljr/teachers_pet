@@ -12,7 +12,7 @@ class LessonsController < ApplicationController
         if params[:course_id]
             @lesson = Lesson.new(course_id: params[:course_id])
         else
-            redirect_to courses_path
+            redirect_to root_path
         end
     end
     
@@ -22,7 +22,7 @@ class LessonsController < ApplicationController
         if @lesson.save
             redirect_to course_lesson_path(@lesson.course, @lesson)
         else
-            flash[:alert]= "Lesson must have title."
+            flash.now[:alert]= "Lesson must have title."
             render :new
         end
     end

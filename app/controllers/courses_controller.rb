@@ -27,13 +27,19 @@ class CoursesController < ApplicationController
         if @course.save
             redirect_to user_path(@course.user)
         else
-            flash[:alert] = "Must complete all fields."
+            flash.now[:alert] = "Must complete all fields."
             render :new
         end
     end
     
     def show
-        @course = Course.find(params[:id])
+        @course = Course.find_by(id: params[:id])
+        if @course && @course.user.id == current_user.id
+            @course
+        else
+            flash[:alert] = "You cannot view other user's courses"
+            redirect_to user_path(current_user)
+        end
         # raise params.inspect
     end
 

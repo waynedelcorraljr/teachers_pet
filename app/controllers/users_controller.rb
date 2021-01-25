@@ -13,7 +13,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
-            flash[:alert] = "Username/Password was invalid. Please try again."
+            flash.now[:alert] = "Username/Password was invalid. Please try again."
             render :new
             # raise @user.errors.inspect
         end
@@ -21,6 +21,12 @@ class UsersController < ApplicationController
     
     def show
         @user = User.find_by(id: params[:id])
+        if @user && @user.id == current_user.id
+            @user
+        else
+            flash[:alert] = "You cannot view other user's classroom"
+            redirect_to user_path(current_user)
+        end   
         # raise params.inspect
     end
 

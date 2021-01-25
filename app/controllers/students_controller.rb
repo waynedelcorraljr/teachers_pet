@@ -22,7 +22,7 @@ class StudentsController < ApplicationController
         if @student.save
             redirect_to user_path(current_user)
         else
-            flash[:alert] = "All fields must be completed."
+            flash.now[:alert] = @student.errors.messages
             render :new
         end
     end

@@ -18,7 +18,11 @@
       <h6><%= f.text_area :description, placeholder: "Description", class: "form-group border border-secondary rounded" %></h6>
   <% end %>
     <%= f.label :student_id, "Student must be selected." %>
-    <h6><%= f.select :student_id, options_from_collection_for_select(Student.all, :id, :name), include_blank: "Select Student" %></h6>
+    <% if @course.student %>
+        <h6><%= f.select :student_id, options_from_collection_for_select(Student.all, :id, :name, selected: @course.student.id), include_blank: "Select Student" %></h6>
+    <% else %>
+        <h6><%= f.select :student_id, options_from_collection_for_select(Student.all, :id, :name), include_blank: "Select Student" %></h6>
+    <% end %>
  
     <%= f.hidden_field :user_id %>
   <%= f.submit %>

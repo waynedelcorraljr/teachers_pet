@@ -6,6 +6,5 @@
   <%= render 'form' %>
 </div>
 
-<div class="d-flex justify-content-center">  
-  <%= link_to "Back to Course", course_path(params[:course_id]) %>
-</div>
+<%# <div class="d-flex justify-content-center">  
+  <%= link_to "Back to Course", course_path(Course.find_by(id: params[:course_id])) %>
