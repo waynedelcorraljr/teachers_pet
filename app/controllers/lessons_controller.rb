@@ -9,7 +9,7 @@ class LessonsController < ApplicationController
     end
 
     def new
-        if params[:course_id]
+        if params[:course_id] && Course.find_by(id: params[:course_id]).user_id == session[:user_id]
             @lesson = Lesson.new(course_id: params[:course_id])
         else
             redirect_to root_path

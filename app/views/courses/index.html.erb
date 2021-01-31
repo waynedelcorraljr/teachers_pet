@@ -3,7 +3,7 @@
 </div>
 <div class="d-flex  justify-content-center">
     <%= form_tag("/courses", method: "get") do %>
-        <%= select_tag "student_id", options_from_collection_for_select(current_user.students, :id, :name), include_blank: true %>
+        <%= select_tag "student_id", options_from_collection_for_select(current_user.students.uniq, :id, :name), include_blank: true %>
         <%= hidden_field_tag "user_id", current_user.id %>
         <%= submit_tag "Filter" %>
     <% end %>
