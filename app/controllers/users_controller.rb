@@ -31,13 +31,24 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        
+        redirect_to root_path 
     end
 
     def edit 
+        redirect_to root_path
+        # @user = User.find_by(id: params[:id]) 
     end
 
     def update
+        redirect_to root_path
+        # @user = User.find_by(id: params[:id])
+        # if session[:user_id] == @user.id
+        #     @user.update(user_params)
+        #     redirect_to user_path(@user)
+        # else
+        #     flash[:alert] = "You can only edit your own information"
+        #     redirect_to root_path
+        # end 
     end
 
     private
