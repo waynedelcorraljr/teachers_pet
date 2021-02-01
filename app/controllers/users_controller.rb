@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     def new
         if session[:user_id]
-            redirect_to user_path(session[:user_id])
+            redirect_to user_path(current_user)
         else
             @user = User.new
         end
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     def index
         if session[:user_id]
-            redirect_to user_path(session[:user_id])
+            redirect_to user_path(current_user)
         else
             redirect_to root_path
         end
