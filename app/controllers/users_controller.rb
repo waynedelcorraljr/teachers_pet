@@ -4,7 +4,11 @@ class UsersController < ApplicationController
     end
 
     def index
-        redirect_to new_user_path
+        if session[:user_id]
+            redirect_to user_path(session[:user_id])
+        else
+            redirect_to root_path
+        end
     end
     
     def create
