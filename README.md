@@ -1,6 +1,6 @@
 # README
 
-The setups steps expect following tools installed on the system.
+The setup steps expect following tools installed on the system.
 
 - Github
 - Ruby [2.6.1]
