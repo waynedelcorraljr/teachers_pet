@@ -22,7 +22,7 @@ class StudentsController < ApplicationController
         if @student.save
             redirect_to user_path(current_user)
         else
-            flash.now[:alert] = @student.errors.messages
+            flash.now[:alert] = @student.errors.full_messages
             render :new
         end
     end

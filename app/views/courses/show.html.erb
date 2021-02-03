@@ -33,7 +33,7 @@
 
     <div class="d-flex  justify-content-center">
     <ol>
-    <% Student.all.each do |student| %>
+    <% Student.all.uniq.each do |student| %>
         <%= render partial: "courses/student_li", locals: {student: student} %>
     <% end %>
     </ol>
