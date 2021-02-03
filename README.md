@@ -39,7 +39,7 @@ rails s
 And now you can visit the site with the URL http://localhost:3000
 
 ## License
-The gem is available as open source under the terms of the MIT License.
+The app is available as open source under the terms of the MIT License.
 
 ## Code of Conduct
 Everyone interacting in the teachers_pet project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
