@@ -64,6 +64,11 @@ class CoursesController < ApplicationController
         end
     end
 
+    def alpha
+        @courses = Course.alpha
+        render :index
+    end
+
     private
 
     def course_params

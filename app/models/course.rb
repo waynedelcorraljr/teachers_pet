@@ -11,4 +11,8 @@ class Course < ApplicationRecord
     def self.by_student(student_id, user_id)
         where(student_id: student_id, user_id: user_id)
     end
+
+    def self.alpha
+        self.order(name: :asc)
+    end
 end

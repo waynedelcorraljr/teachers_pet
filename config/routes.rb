@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   get '/signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'
   get '/auth/:provider/callback', to: 'sessions#omniauth'
+  get 'course/alpha', to: 'courses#alpha'
 end
